@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Verse Search</title>
+</head>
+<body>
+    <h1>Bible Verse Search</h1>
+    <form method="post">
+        <label for="keyword">Enter a keyword:</label>
+        <input type="text" id="keyword" name="keyword" required>
+        <button type="submit">Search</button>
+    </form>
+    {% if result %}
+       <h2>Results:</h2>
+      {% if result != "No matching verses found." %}
+        <ul>
+            {% for verse in result %}
+                <li>{{ verse }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>{{ result }}</p>
+    {% endif %}
+    {% if closing_message %}
+        <p>{{ closing_message }}</p>
+    {% endif %}
+{% endif %}
+</body>
+</html>
